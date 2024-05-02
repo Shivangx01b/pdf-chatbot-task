@@ -12,7 +12,7 @@ a) Docker build
   ```docker build -t pdf_rag . ```
 
 - Step 2
-  ```docker run -it -e OPENAI_API_KEY="<your openai key>" -p 8000:8000 pdf_rag```
+  ```docker run -it -e OPENAI_API_KEY="<your openai key>" -e slackchannel="<your slack channel id>" -e slacktoken="<your slacktoken" -p 8000:8000 pdf_rag```
 
 b) Send request
 
