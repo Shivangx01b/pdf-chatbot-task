@@ -1,5 +1,7 @@
-# pdf-chatbot-task
-pdf-chatbot-task
+# Production level api to read RAG your PDFs
+- Uses Redis as broker
+- Uses Celery for task manager
+- Uses async fastapi for accepting "n" numbers of requests
 
 
 ## How to Run
@@ -28,5 +30,12 @@ b) Send request
   --header 'Content-Type: application/json' \
   --data '{"taskid": "2580a111-8437-4e65-b483-0769e50b3a1f", "question": "What is shivang in Zania Inc"}'
   ```
+
+
+## How to improve Code
+
+- Can use cache to save query cost when agent is called to check the response from RAG
+- Can use multiple agents as a feed back loop for less wrong answers
+- Can use go api or rust api for blazing fast api response in production
   
 
