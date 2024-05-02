@@ -1,9 +1,10 @@
 from langchain_openai import OpenAI
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
+from langchain_openai import ChatOpenAI
 # Initialize the conversation chain
 memory = ConversationBufferMemory(memory_key="history")
-llm = OpenAI(temperature=0)  # Use OpenAI from langchain.llms
+llm = ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo-0125") # Use OpenAI from langchain.llms
 conversation = ConversationChain(llm=llm, memory=memory)
 
 class OpenAIGPT3Agent():
