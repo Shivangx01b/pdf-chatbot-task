@@ -1,4 +1,4 @@
-# Production level api to read RAG your PDFs
+# Production level api to read RAG your PDFs using LlamaIndex, LangChain and OpenAI 
 - Uses Redis as broker
 - Uses Celery for task manager
 - Uses async fastapi for accepting "n" numbers of requests
