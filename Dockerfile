@@ -19,6 +19,7 @@ RUN pip install --upgrade llama-index
 RUN pip install langchain
 RUN pip install openai
 RUN pip install langchain-openai
+RUN pip install slack_sdk
 COPY . .
 
 EXPOSE 8000

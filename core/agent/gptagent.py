@@ -1,8 +1,6 @@
 from langchain_openai import OpenAI
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
-import os
-
 # Initialize the conversation chain
 memory = ConversationBufferMemory(memory_key="history")
 llm = OpenAI(temperature=0)  # Use OpenAI from langchain.llms

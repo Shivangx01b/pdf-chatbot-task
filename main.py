@@ -6,6 +6,7 @@ import redis
 from core.vectordb import dbhandler
 from core.agent import gptagent
 import os
+from slack_sdk import WebClient
 app = FastAPI()
 
 
@@ -18,6 +19,10 @@ redis_client = redis.from_url(redis_url)
 # Celery Task Manager
 celery_app = Celery("tasks", broker=redis_url, backend=redis_url)
 
+
+# Slack bot token
+SLACK_BOT_TOKEN = os.environ["slacktoken"]
+slack_client = WebClient(token=SLACK_BOT_TOKEN)
 
 
 # To answer your questions
@@ -46,6 +51,12 @@ async def query_index(query: Request):
 
         llm_gpt_response = gptagent.OpenAIGPT3Agent.getconversation(prompt)
         
+        # Push the response to Slack
+        slack_client.chat_postMessage(
+            channel=os.environ["slackchannel"],
+            text=f"Question: {query_to_ask}\nAnswer: {llm_gpt_response}"
+        )
+
         return JSONResponse(content={"question": str(query_to_ask), "answer": str(llm_gpt_response)}, status_code=200)
     
     # Check if task id is still in pending
